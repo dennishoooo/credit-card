@@ -1,6 +1,10 @@
 import express from "express";
+// import fetch from "node-fetch";
+import { env } from "./env.js";
 
 const app = express();
+const url = `https://${env.DOMAIN}:${env.PORT}/AgilePointService/Workflow/CreateProcInst`;
+const UUIDUrl = `https://${env.DOMAIN}:${env.PORT}/AgilePointService/Workflow/GetUUID`;
 
 app.use(express.json());
 
@@ -35,6 +39,14 @@ app.get("/data", (req, res) => {
       opOutSMS: false,
     },
   });
+});
+
+app.get("/test", async (req, res) => {
+  console.log(UUIDUrl);
+  let response = await fetch(UUIDUrl);
+  let result = await response.json();
+  console.log(result);
+  res.json("ok");
 });
 
 app.listen(8080, () => {
