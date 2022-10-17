@@ -5,13 +5,13 @@ import { getFetchApi } from "./helpers.js";
 
 const app = express();
 
-const { domain, username, password } = env;
+const { domain, username, password, port, appName } = env;
 const accessToken =
   "Basic " +
   Buffer.from(domain + "\\" + username + ":" + password).toString("base64");
-const baseURL = `http://${env.domain}:${env.port}/AgilePointServer/Workflow`;
+const baseURL = `http://${domain}:${port}/AgilePointServer/Workflow`;
 const url = `${baseURL}/CreateProcInst`;
-const processIDUrl = `${baseURL}/GetReleasedPID/${env.appName}`;
+const processIDUrl = `${baseURL}/GetReleasedPID/${appName}`;
 const UUIDUrl = `${baseURL}/GetUUID`;
 
 app.use(express.json());
