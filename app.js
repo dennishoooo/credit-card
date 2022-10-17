@@ -1,5 +1,5 @@
 import express from "express";
-// import fetch from "node-fetch";
+import fetch from "node-fetch";
 import { env } from "./env.js";
 
 const app = express();
@@ -11,7 +11,7 @@ const accessToken =
   Buffer.from(domain + "\\" + username + ":" + password).toString("base64");
 const baseURL = `http://${env.DOMAIN}:${env.PORT}/AgilePointServer/Workflow`;
 const url = `${baseURL}/CreateProcInst`;
-const processID = `${baseURL}/GetReleasedPID/${env.APP_NAME}`;
+const processIDUrl = `${baseURL}/GetReleasedPID/${env.APP_NAME}`;
 const UUIDUrl = `${baseURL}/GetUUID`;
 
 // http://EC2AMAZ-P5QI6NR:13490/agilepointserver
@@ -51,17 +51,25 @@ app.get("/data", (req, res) => {
   });
 });
 
-app.get("/test", async (req, res) => {
-  console.log(UUIDUrl);
+app.get("/processID", async (req, res) => {
+  let response = await fetch(processIDUrl, {
+    headers: {
+      Authorization: accessToken,
+    },
+  });
+  let result = await response.json();
+  res.json(result);
+});
+
+app.get("/uuid", async (req, res) => {
   let response = await fetch(UUIDUrl, {
     headers: {
       Authorization: accessToken,
     },
   });
-  // headers.set('Authorization', 'Basic ' + Buffer.from(username + ":" + password).toString('base64'));
   let result = await response.json();
-  console.log(result);
-  res.json("ok");
+  let uuid = result.GetUUIDResult;
+  res.json(uuid);
 });
 
 app.listen(8080, () => {
@@ -71,7 +79,7 @@ app.listen(8080, () => {
     accessToken,
     baseURL,
     url,
-    processID,
+    processIDUrl,
     UUIDUrl,
   });
   console.log("listening...");
