@@ -3,14 +3,16 @@ import express from "express";
 import { env } from "./env.js";
 
 const app = express();
+const domain = env.DOMAIN;
 const username = env.USERNAME;
 const password = env.PASSWORD;
 const accessToken =
-  "Basic " + Buffer.from(username + ":" + password).toString("base64");
+  "Basic " +
+  Buffer.from(domain + "\\" + username + ":" + password).toString("base64");
 const baseURL = `http://${env.DOMAIN}:${env.PORT}/AgilePointServer/Workflow`;
 const url = `${baseURL}/CreateProcInst`;
 const processID = `${baseURL}/GetReleasedPID/${env.APP_NAME}`;
-const UUID = `${baseURL}/GetUUID`;
+const UUIDUrl = `${baseURL}/GetUUID`;
 
 // http://EC2AMAZ-P5QI6NR:13490/agilepointserver
 
@@ -70,7 +72,7 @@ app.listen(8080, () => {
     baseURL,
     url,
     processID,
-    UUID,
+    UUIDUrl,
   });
   console.log("listening...");
 });
