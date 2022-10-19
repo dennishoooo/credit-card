@@ -49,6 +49,11 @@ app.get("/data", (req, res) => {
   });
 });
 
+app.get("/hkid", (req, res) => {
+  console.log(req.query);
+  res.json({ hkid: "Y123456(7)" });
+});
+
 app.get("/processID", async (req, res) => {
   let result = await getFetchApi(processIDUrl, accessToken);
   let processID = result.GetReleasedPIDResult;
