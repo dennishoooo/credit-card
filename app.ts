@@ -10,8 +10,7 @@ const app = express();
 
 const { domain, username, password, port, appName } = env;
 const accessToken =
-  "Basic " +
-  Buffer.from(domain + "\\" + username + ":" + password).toString("base64");
+  "Basic " + Buffer.from(username + ":" + password).toString("base64");
 const baseUrl = `http://${domain}:${port}/AgilePointServer/Workflow`;
 const createProcessUrl = `${baseUrl}/CreateProcInst`;
 const processIDUrl = `${baseUrl}/GetReleasedPID/${appName}`;

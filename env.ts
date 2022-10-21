@@ -6,6 +6,6 @@ export const env = {
   domain: process.env.DOMAIN,
   port: process.env.PORT,
   appName: process.env.APP_NAME,
-  username: process.env.USERNAME,
+  username: `${process.env.HOST}\\${process.env.USERNAME}`,
   password: process.env.PASSWORD,
 };
