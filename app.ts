@@ -62,6 +62,7 @@ app.get("/hkid", (req, res) => {
 
 app.get("/processID", cardController.getProcessID);
 app.get("/uuid", cardController.genUUID);
+app.get("/createProcess", cardController.createProcess);
 
 app.listen(8080, () => {
   console.table({

@@ -3,12 +3,19 @@ import { CardService } from "./card.service";
 
 export class CardController {
   constructor(private cardService: CardService) {}
+
   getProcessID = async (req: Request, res: Response) => {
-    let uuid = await this.cardService.getProcessID();
-    res.json({ uuid });
+    let processID = await this.cardService.getProcessID();
+    res.json({ processID });
   };
+
   genUUID = async (req: Request, res: Response) => {
     let uuid = await this.cardService.genUUID();
-    res.json(uuid);
+    res.json({ uuid });
+  };
+
+  createProcess = async (req: Request, res: Response) => {
+    let result = await this.cardService.createProcess();
+    res.json(result);
   };
 }

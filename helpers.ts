@@ -33,3 +33,24 @@ export async function getFetchApi(url: string, accessToken: string) {
     return error;
   }
 }
+
+export async function postFetchApi(
+  url: string,
+  body: any,
+  accessToken: string
+) {
+  try {
+    let response = await fetch(url, {
+      method: "POST",
+      headers: {
+        Authorization: accessToken,
+      },
+      body: JSON.stringify(body),
+    });
+    let result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+    return error;
+  }
+}
