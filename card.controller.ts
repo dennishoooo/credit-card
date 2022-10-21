@@ -7,4 +7,8 @@ export class CardController {
     let uuid = await this.cardService.getProcessID();
     res.json({ uuid });
   };
+  genUUID = async (req: Request, res: Response) => {
+    let uuid = await this.cardService.genUUID();
+    res.json(uuid);
+  };
 }

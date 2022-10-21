@@ -60,24 +60,8 @@ app.get("/hkid", (req, res) => {
   res.json({ hkid: "Y123456(7)" });
 });
 
-app.get("/processID", async (req, res) => {
-  let result = await getFetchApi(processIDUrl, accessToken);
-  let processID = result.GetReleasedPIDResult;
-  res.json(processID);
-});
-
-app.get("/uuid", async (req, res) => {
-  let response = await fetch(UUIDUrl, {
-    headers: {
-      Authorization: accessToken,
-    },
-  });
-  let result = await response.json();
-  let uuid = result.GetUUIDResult;
-  res.json(uuid);
-});
-
-app.get("/processIDtest", cardController.getProcessID);
+app.get("/processID", cardController.getProcessID);
+app.get("/uuid", cardController.genUUID);
 
 app.listen(8080, () => {
   console.table({
