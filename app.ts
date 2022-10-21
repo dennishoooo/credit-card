@@ -18,8 +18,8 @@ const processIDUrl = `${baseUrl}/GetReleasedPID/${appName}`;
 const UUIDUrl = `${baseUrl}/GetUUID`;
 const url: Url = { baseUrl, createProcessUrl, processIDUrl, UUIDUrl };
 
-const cardService = new CardService(url, accessToken);
-const cardController = new CardController(cardService);
+const test = new CardService(url, accessToken);
+const cardController = new CardController(test);
 
 app.use(express.json());
 
