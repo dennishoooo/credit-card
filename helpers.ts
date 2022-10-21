@@ -19,7 +19,7 @@ import fetch from "node-fetch";
 //   console.log(_uuid());
 // }
 
-export async function getFetchApi(url, accessToken) {
+export async function getFetchApi(url: string, accessToken: string) {
   try {
     let response = await fetch(url, {
       headers: {
