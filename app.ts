@@ -1,9 +1,10 @@
 import express from "express";
 import fetch from "node-fetch";
-import { env } from "./env.js";
-import { getFetchApi } from "./helpers.js";
-import { CardService } from "./card.service.js";
-import { CardController } from "./card.controller.js";
+import { env } from "./env";
+import { getFetchApi } from "./helpers";
+import { CardService } from "./card.service";
+import { CardController } from "./card.controller";
+import { Url } from "./types";
 
 const app = express();
 
@@ -11,11 +12,11 @@ const { domain, username, password, port, appName } = env;
 const accessToken =
   "Basic " +
   Buffer.from(domain + "\\" + username + ":" + password).toString("base64");
-const baseURL = `http://${domain}:${port}/AgilePointServer/Workflow`;
-const createProcessUrl = `${baseURL}/CreateProcInst`;
-const processIDUrl = `${baseURL}/GetReleasedPID/${appName}`;
-const UUIDUrl = `${baseURL}/GetUUID`;
-const url = { createProcessUrl, processIDUrl, UUIDUrl };
+const baseUrl = `http://${domain}:${port}/AgilePointServer/Workflow`;
+const createProcessUrl = `${baseUrl}/CreateProcInst`;
+const processIDUrl = `${baseUrl}/GetReleasedPID/${appName}`;
+const UUIDUrl = `${baseUrl}/GetUUID`;
+const url: Url = { baseUrl, createProcessUrl, processIDUrl, UUIDUrl };
 
 const cardService = new CardService(url, accessToken);
 const cardController = new CardController(cardService);
@@ -77,7 +78,7 @@ app.get("/uuid", async (req, res) => {
   res.json(uuid);
 });
 
-app.get("/processIDtest", cardController.getUUID);
+app.get("/processIDtest", cardController.getProcessID);
 
 app.listen(8080, () => {
   console.table({
