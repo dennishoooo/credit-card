@@ -1,12 +1,11 @@
 import express from "express";
-import fetch from "node-fetch";
 import { env } from "./env";
-import { getFetchApi } from "./helpers";
 import { CardService } from "./card.service";
 import { CardController } from "./card.controller";
 import { Url } from "./types";
 
 const app = express();
+const PORT = 8080;
 
 const { domain, username, password, port, appName } = env;
 const accessToken =
@@ -26,35 +25,6 @@ app.get("/", async (req, res) => {
   res.json("hello world");
 });
 
-app.get("/data", (req, res) => {
-  res.json({
-    applicationDate: "20181204",
-    hkid: "K888888(4)",
-    product: "WAKUWAKU",
-    cardType: "INSTANT",
-    refNo: "20221004WAWA",
-    AppDetails: {
-      salutation: "MR",
-      surname: "CHAN",
-      givenName: "TAI MAN",
-      dob: "31011995",
-      mobileNo: "98765432",
-      homeNo: "23456789",
-      homeAddress: "20/F TST BLDG",
-      emailAddress: "dummy@aeon.com.hk",
-      nationality: "HK",
-      workingStatus: "Employed",
-      companyName: "AEON CREDIT",
-      companyTel: "21111111",
-      monthlyIncome: 50000,
-      opOutMailing: true,
-      opOutPhoneCall: true,
-      opOutEmail: false,
-      opOutSMS: false,
-    },
-  });
-});
-
 app.get("/hkid", (req, res) => {
   console.log(req.query);
   res.json({ hkid: "Y123456(7)" });
@@ -62,9 +32,9 @@ app.get("/hkid", (req, res) => {
 
 app.get("/processID", cardController.getProcessID);
 app.get("/uuid", cardController.genUUID);
-app.get("/createProcess", cardController.createProcess);
+app.post("/createProcess", cardController.createProcess);
 
-app.listen(8080, () => {
+app.listen(PORT, () => {
   console.table({
     username,
     password,
@@ -74,5 +44,5 @@ app.listen(8080, () => {
     processIDUrl,
     UUIDUrl,
   });
-  console.log("listening...");
+  console.log(`listening at http://localhost:${PORT}`);
 });
