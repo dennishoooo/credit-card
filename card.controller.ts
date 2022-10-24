@@ -15,7 +15,9 @@ export class CardController {
   };
 
   createProcess = async (req: Request, res: Response) => {
-    let result = await this.cardService.createProcess();
+    console.log(req.body);
+
+    let result = await this.cardService.createProcess(req.body);
     res.json(result);
   };
 }
