@@ -3,6 +3,8 @@ import { env } from "./env";
 import { CardService } from "./card.service";
 import { CardController } from "./card.controller";
 import { Url } from "./types";
+import path from "path";
+import fs from "fs";
 
 const app = express();
 const PORT = 8080;
@@ -25,8 +27,10 @@ app.get("/", async (req, res) => {
   res.json("hello world");
 });
 
-app.get("/hkid", (req, res) => {
+app.get("/hkid", async (req, res) => {
   console.log(req.query);
+  let filePath = path.resolve(`C:/Users/AP1/Documents/credit-card`);
+  let data = await fs.promises.readdir(filePath);
   res.json({ hkid: "Y123456(7)" });
 });
 
