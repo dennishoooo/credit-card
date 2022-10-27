@@ -1,47 +1,101 @@
 {
-  "applicationDate": "20181204",
-
-  "hkid": "K888888(4)",
-
-  "product": "WAKUWAKU",
-
-  "cardType": "INSTANT",
-
-  "refNo": "20221004WAWA",
-
-  "AppDetails": {
-    "salutation": "MR",
-
-    "surname": "CHAN",
-
-    "givenName": "TAI MAN",
-
-    "dob": "31011995",
-
-    "mobileNo": "98765432",
-
-    "homeNo": "23456789",
-
-    "homeAddress": "20/F TST BLDG",
-
-    "emailAddress": "dummy@aeon.com.hk",
-
-    "nationality": "HK",
-
-    "workingStatus": "Employed",
-
-    "companyName": "AEON CREDIT",
-
-    "companyTel": "21111111",
-
-    "monthlyIncome": 50000,
-
-    "opOutMailing": true,
-
-    "opOutPhoneCall": true,
-
-    "opOutEmail": false,
-
-    "opOutSMS": false
-  }
+  "ProcessID": "BF71000D3A81F8CA11DD54FB89B58BB1",
+  "ProcessInstID": "BF71000D3A81F8CA11DD550A7A95C4C7",
+  "ProcInstName": "Process Map Approval -BF71000D3A81F8CA11DD550A7A95C4C7",
+  "WorkObjID": "BF71000D3A81F8CA11DD550A7A95C4C7",
+  "WorkObjInfo": null,
+  "SuperProcInstID": null,
+  "Initiator": "ASLBPM\\AP1",
+  "CustomID": "BF71000D3A81F8CA11DD550A7A95C4C7",
+  "Attributes": [
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:CardApplicationType__u",
+      "Value": "Instant"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:ProductCode__u",
+      "Value": "WAKUWAKU"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:HKIDNo__u",
+      "Value": "K888888(4)"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:Salutation__u",
+      "Value": "Mr."
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:Surname__u",
+      "Value": "CHAN"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:Givenname__u",
+      "Value": "TAI MAN"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:MobileNo__u",
+      "Value": "98765432"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:DateofBirth__u",
+      "Value": "1995-01-31"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:HomeTelNo__u",
+      "Value": "23456789"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:EmailAddress__u",
+      "Value": "dummy@aeon.com.hk"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:Nationality__u",
+      "Value": "HongKong"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:ResidentialAddress__u",
+      "Value": "20/F TST BLDG"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:WorkingStatus__u",
+      "Value": "Employed"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:CompanyName__u",
+      "Value": "AEON CREDIT"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:CompanyTelNo__u",
+      "Value": "21111111"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:MonthlyIncome__u",
+      "Value": 50000
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:OptOutEmail__u",
+      "Value": true
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:OptOutMailing__u",
+      "Value": true
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:OptOutPhoneCall__u",
+      "Value": false
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:OptOutSMS__u",
+      "Value": false
+    },
+    {
+      "Name": "/pd:AP/pd:formFields/pd:RefNo",
+      "Value": "20221004WAWA"
+    },
+    {
+      "Name": "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:SubmitDate__u",
+      "Value": "2018-12-04"
+    }
+  ],
+  "blnStartImmediately": true
 }

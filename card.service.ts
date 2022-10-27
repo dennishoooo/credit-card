@@ -1,5 +1,5 @@
 import { env } from "./env";
-import { getFetchApi, postFetchApi } from "./helpers";
+import { formatDate, getFetchApi, postFetchApi } from "./helpers";
 import { AppData, Url } from "./types";
 
 export class CardService {
@@ -26,14 +26,13 @@ export class CardService {
     let data = {
       ProcessID: processID,
       ProcessInstID: uuid, // "0FD3088F40B640D4AFE41AEEBDAE0004",
-      ProcInstName: "API Credit Card Approval - " + uuid,
+      ProcInstName: "Process Map Approval -" + uuid,
       WorkObjID: uuid, //"0FD3088F40B640D4AFE41AEEBDAE0004",
       WorkObjInfo: null,
       SuperProcInstID: null,
       Initiator: env.username, // "mydomain\\andy",
       CustomID: uuid, //"0FD3088F40B640D4AFE41AEEBDAE0004",
       Attributes: [
-        // { Name: "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:SubmitDate__u", Value: applicationDate },
         {
           Name: "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:CardApplicationType__u",
           Value: cardType,
@@ -42,7 +41,6 @@ export class CardService {
           Name: "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:ProductCode__u",
           Value: product,
         },
-
         {
           Name: "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:HKIDNo__u",
           Value: hkid,
@@ -65,7 +63,7 @@ export class CardService {
         },
         {
           Name: "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:DateofBirth__u",
-          Value: AppDetails.dob,
+          Value: formatDate(AppDetails.dob),
         },
         {
           Name: "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:HomeTelNo__u",
@@ -84,6 +82,7 @@ export class CardService {
           Name: "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:ResidentialAddress__u",
           Value: AppDetails.homeAddress,
         },
+
         {
           Name: "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:WorkingStatus__u",
           Value: AppDetails.workingStatus,
@@ -122,19 +121,17 @@ export class CardService {
         { Name: "/pd:AP/pd:formFields/pd:RefNo", Value: refNo },
         {
           Name: "/pd:AP/pd:dataSource/pd:APDataEntity/pd:DSDB/pd:APCreditCard__u/pd:SubmitDate__u",
-          Value: applicationDate,
+          Value: formatDate(applicationDate),
         },
       ],
       blnStartImmediately: true,
     };
 
-    console.log(data);
-
-  //   let result = await postFetchApi(
-  //     this.url.createProcessUrl,
-  //     data,
-  //     this.accessToken
-  //   );
-    return data;
-  // };
+    let result = await postFetchApi(
+      this.url.createProcessUrl,
+      data,
+      this.accessToken
+    );
+    return result;
+  };
 }
