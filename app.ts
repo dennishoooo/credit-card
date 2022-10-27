@@ -29,9 +29,15 @@ app.get("/", async (req, res) => {
 
 app.get("/hkid", async (req, res) => {
   console.log(req.query);
-  let filePath = path.resolve(`C:/Users/AP1/Documents/credit-card`);
+  let ref = req.query.ref;
+  if (!ref) res.json({ hkid: "Y123456(7)" });
+  let filePath = path.resolve(`C:/Users/AP1/Documents/credit-card/${ref}`);
   let data = await fs.promises.readdir(filePath);
-  res.json({ hkid: "Y123456(7)" });
+  let hkid = data[0];
+  if (!hkid) res.json({ hkid: "Y123456(7)" });
+  hkid = hkid.slice(5, 15);
+  console.log(hkid);
+  res.json({ hkid });
 });
 
 app.get("/processID", cardController.getProcessID);
