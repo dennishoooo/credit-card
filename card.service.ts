@@ -26,7 +26,7 @@ export class CardService {
     let data = {
       ProcessID: processID,
       ProcessInstID: uuid, // "0FD3088F40B640D4AFE41AEEBDAE0004",
-      ProcInstName: "Process Map Approval -" + uuid,
+      ProcInstName: "API Credit Card App V2 -" + uuid,
       WorkObjID: uuid, //"0FD3088F40B640D4AFE41AEEBDAE0004",
       WorkObjInfo: null,
       SuperProcInstID: null,
